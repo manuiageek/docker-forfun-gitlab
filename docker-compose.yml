@@ -11,6 +11,9 @@ services:
       - gitlab-logs:/var/log/gitlab
       - gitlab-data:/var/opt/gitlab
     shm_size: '256m'
+    environment:
+      - GITLAB_ROOT_PASSWORD=${GITLAB_ROOT_PASSWORD}
+      - GITLAB_ROOT_EMAIL=${GITLAB_ROOT_EMAIL}
 
 volumes:
   gitlab-config:
