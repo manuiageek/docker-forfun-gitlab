@@ -10,13 +10,10 @@ This repository contains a `docker-compose.yml` file to easily deploy GitLab usi
   docker volume create gitlab-logs
   docker volume create gitlab-data
 
-## connect and root access
-### Get root password 
-Access to the bash console of the container
-et show password with : 
-cat /etc/gitlab/initial_root_password
-
-### Connection
+## Connection
 Go to : http://localhost:8929/
+login : root
+password : the one that you have defined
+
 
 
