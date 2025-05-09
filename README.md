@@ -1,6 +1,7 @@
 # GitLab Docker Compose Setup
 
-This repository contains a `docker-compose.yml` file to easily deploy GitLab using Docker.
+This repository contains a `docker-compose.yml` file 
+to easily deploy GitLab using Docker.
 
 ## Prerequisites
 
@@ -9,8 +10,15 @@ This repository contains a `docker-compose.yml` file to easily deploy GitLab usi
   docker volume create gitlab-config
   docker volume create gitlab-logs
   docker volume create gitlab-data
+* docker compose up -d
 
-## Connection
+## change root password 
+docker exec -it gitlab gitlab-rake "gitlab:password:reset"
+enter : root
+password : theoneyouwantbuthardenoughtoguess 
+retypePassword : theoneyouwantbuthardenoughtoguess
+
+## Connection on http
 Go to : http://localhost:8929/
 login : root
 password : the one that you have defined
