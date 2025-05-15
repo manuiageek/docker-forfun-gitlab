@@ -29,8 +29,10 @@ password : the one that you have defined
 ## Create runner with root login
 [Admin ](http://localhost:8929/admin/runners)
 
-### in a powershell : 
-docker exec -it gitlab-runner gitlab-runner register
+Create runner by replacing weird id by : 
+http://localhost:8929/admin/runners/..../register
 
+### in a powershell terminal : 
+docker exec -it gitlab-runner gitlab-runner register  --url http://gitlab  --token glrt-somethingverylong
 
 
