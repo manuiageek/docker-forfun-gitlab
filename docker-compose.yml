@@ -12,8 +12,22 @@ services:
       - gitlab-data:/var/opt/gitlab
     shm_size: '256m'
     environment:
-      - TZ=Pacific/Tahiti
-      - GITLAB_ROOT_PASSWORD=hardtofindpassword
+      - TZ=Pacific/Tahiti      
+      - GITLAB_ROOT_PASSWORD=${GITLAB_ROOT_PASSWORD}
+    networks:
+      - gitlab-network
+
+  gitlab-runner:
+    image: gitlab/gitlab-runner:alpine
+    container_name: gitlab-runner
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - gitlab-runner-config:/etc/gitlab-runner
+    environment:
+      - TZ=Europe/Paris
+    networks:
+      - gitlab-network
 
 volumes:
   gitlab-config:
@@ -21,4 +35,10 @@ volumes:
   gitlab-logs:
     external: true
   gitlab-data:
+    external: true
+  gitlab-runner-config:
+    external: true
+
+networks:
+  gitlab-network:
     external: true
